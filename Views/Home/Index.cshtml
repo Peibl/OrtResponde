@@ -5,15 +5,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @model IEnumerable<OrtResponde.Models.Question>
-<environment include="Development">
-    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
 
-</environment>
-
-<environment exclude="Development">
-    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
-
-</environment>
 @if (SignInManager.IsSignedIn(User))
 {
 
@@ -75,10 +67,11 @@
                 <hr>
                 <div class="post-footer-option container">
                     <ul class="list-unstyled">
-                        <li><i class="fa fa-hand-lizard"></i> @item.Likes</li>
-                        <li><i class="glyphicon glyphicon-thumbs-down"></i> @item.Dislikes</li>
-                        <li><i class="glyphicon glyphicon-comment"></i> @item.Answers.Count()</li>
-                        <li><a asp-action="Create" asp-controller="Answers" asp-route-questionId="@item.Id"><i class="glyphicon glyphicon-share-alt"></i> Responder</a></li>
+
+                        <li> <i data-feather="thumbs-up"></i> @item.Likes</li>
+                        <li><i data-feather="thumbs-down"></i> @item.Dislikes</li>
+                        <li><i data-feather="message-circle"></i> @item.Answers.Count()</li>
+                        <li><a asp-action="Create" asp-controller="Answers" asp-route-questionId="@item.Id"><i data-feather="arrow-right"></i> Responder</a></li>
                     </ul>
                 </div>
             </section>

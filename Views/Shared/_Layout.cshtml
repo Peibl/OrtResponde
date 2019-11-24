@@ -10,24 +10,18 @@
     <title>@ViewData["Title"] - OrtResponde</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    @*<link rel="stylesheet" href="~lib/font-awesome/css/all.css" />*@
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
-
+        <script src="~/lib/feather-icons/feather.js"></script>
     </environment>
-
     <environment exclude="Development">
-        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.17.0/feather.min.js"
+                asp-fallback-src="~/lib/feather-icons/feather.min.js"
+                asp-fallback-test="feather"
+                integrity="sha256-XcN55BkQ8zLrLvJmpE4nPHW+zYKGwW10JaYd7bq49gQ="
+                crossorigin="anonymous">
+        </script>
     </environment>
-            @*<link rel="stylesheet" href="~lib/fontawesome2/css/all.css" />*@
 
-
-            @*<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css” rel=”stylesheet">*@
-
-            @*<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
-            @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>*@
-            @* <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>*@
 </head>
 <body>
     <header>
