@@ -12,70 +12,24 @@
     <div class="text-center">
         <h1 class="display-4">Welcome Hello @User.Identity.Name</h1>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        Preguntas
-                    </th>
-                    <th>
-                        Respuestas
-                    </th>
-                    <th>
-                        Likes
-                    </th>
-                    <th>
-                        Dislikes
-                    </th>
+        <ul class="list-unstyled list-group">
+            @foreach (var item in (List<Question>)ViewData["Questions"])
+            {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <h2>@item.Descripcion</h2>
+                <span class="badge">
+                    <i data-feather="thumbs-up"></i> @item.Likes
+                    <i data-feather="thumbs-down"></i> @item.Dislikes
+                    <i data-feather="message-circle"></i> @item.Answers.Count()
+                    <a class="anchor-time" asp-action="Create" asp-controller="Answers" asp-route-questionId="@item.Id">
+                        <i data-feather="arrow-right"></i> Responder
+                    </a>
 
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in (List<Question>)ViewData["Questions"])
-                {
-                    <tr>
-                        <td>
-                            @item.Descripcion
-                        </td>
-                        <td>
-                            @item.Answers.Count()
-                        </td>
-                        <td>
-                            @item.Likes
-                        </td>
-                        <td>
-                            @item.Dislikes
-                        </td>
+                </span>
+            </li>
 
-                        <td>
-                            <a asp-action="Create" asp-controller="Answers" asp-route-questionId="@item.Id">Responder</a>
-
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-
-
-        @foreach (var item in (List<Question>)ViewData["Questions"])
-        {
-
-            <h2> @item.Descripcion</h2>
-
-            <section class="post-footer">
-                <hr>
-                <div class="post-footer-option container">
-                    <ul class="list-unstyled">
-
-                        <li> <i data-feather="thumbs-up"></i> @item.Likes</li>
-                        <li><i data-feather="thumbs-down"></i> @item.Dislikes</li>
-                        <li><i data-feather="message-circle"></i> @item.Answers.Count()</li>
-                        <li><a asp-action="Create" asp-controller="Answers" asp-route-questionId="@item.Id"><i data-feather="arrow-right"></i> Responder</a></li>
-                    </ul>
-                </div>
-            </section>
-        }
+            }
+        </ul>
 
 
     </div>
