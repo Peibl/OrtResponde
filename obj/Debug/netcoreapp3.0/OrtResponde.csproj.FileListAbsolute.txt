@@ -131,8 +131,6 @@ C:\Users\Pablo\source\repos\OrtResponde\bin\Debug\netcoreapp3.0\ru\Microsoft.Cod
 C:\Users\Pablo\source\repos\OrtResponde\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Pablo\source\repos\OrtResponde\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Pablo\source\repos\OrtResponde\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Pablo\source\repos\OrtResponde\obj\Debug\netcoreapp3.0\OrtResponde.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Pablo\source\repos\OrtResponde\obj\Debug\netcoreapp3.0\OrtResponde.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Pablo\source\repos\OrtResponde\obj\Debug\netcoreapp3.0\Razor\Views\Questions\Create.cshtml.g.cs
 C:\Users\Pablo\source\repos\OrtResponde\obj\Debug\netcoreapp3.0\Razor\Views\Questions\Delete.cshtml.g.cs
 C:\Users\Pablo\source\repos\OrtResponde\obj\Debug\netcoreapp3.0\Razor\Views\Questions\Details.cshtml.g.cs
@@ -143,3 +141,6 @@ C:\Users\Pablo\source\repos\OrtResponde\obj\Debug\netcoreapp3.0\Razor\Views\Answ
 C:\Users\Pablo\source\repos\OrtResponde\obj\Debug\netcoreapp3.0\Razor\Views\Answers\Details.cshtml.g.cs
 C:\Users\Pablo\source\repos\OrtResponde\obj\Debug\netcoreapp3.0\Razor\Views\Answers\Edit.cshtml.g.cs
 C:\Users\Pablo\source\repos\OrtResponde\obj\Debug\netcoreapp3.0\Razor\Views\Answers\Index.cshtml.g.cs
+C:\Users\Pablo\source\repos\OrtResponde\bin\Debug\netcoreapp3.0\libman.json
+C:\Users\Pablo\source\repos\OrtResponde\obj\Debug\netcoreapp3.0\OrtResponde.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Pablo\source\repos\OrtResponde\obj\Debug\netcoreapp3.0\OrtResponde.MvcApplicationPartsAssemblyInfo.cache
