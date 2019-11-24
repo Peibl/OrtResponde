@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model IEnumerable<OrtResponde.Models.Question>
+@if (SignInManager.IsSignedIn(User))
+    {
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome Hello @User.Identity.Name</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Preguntas
+                    </th>
+                    <th>
+                        Respuestas
+                    </th>
+                    <th>
+                        Likes
+                    </th>
+                    <th>
+                        Dislikes
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in (List<Question>)ViewData["Questions"])
+                {
+                <tr>
+                    <td>
+                        @item.Descripcion
+                    </td>
+                    <td>
+                        @item.Answers.Count()
+                    </td>
+                    <td>
+                        @item.Likes
+                    </td>
+                    <td>
+                        @item.Dislikes
+                    </td>
+
+                    <td>
+                        <a asp-action="Create" asp-controller="Answers" asp-route-questionId="@item.Id">Responder</a>
+
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    }
+    else
+    {
+
+
+        <div class="text-center">
+            <h1 class="display-4">Welcome</h1>
+            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        </div>
+    }
+
+
+
