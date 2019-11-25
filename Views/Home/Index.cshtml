@@ -25,59 +25,43 @@ else
 <ul class="list-unstyled list-group">
     @foreach (var item in (List<Question>)ViewData["Questions"])
     {
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <h2>@item.Descripcion</h2>
-            <span class="badge">
-                <i data-feather="thumbs-up"></i> @item.Likes
-                <i data-feather="thumbs-down"></i> @item.Dislikes
-                <i data-feather="message-circle"></i> @item.Answers.Count()
-                @if (SignInManager.IsSignedIn(User))
-                {
+    
+        <li  class="list-group-item d-flex justify-content-between align-items-center">
+            <a class="nostyle" asp-action="Details" asp-controller="Questions" asp-route-id="@item.Id">
+                <h2>@item.Descripcion</h2>
+            </a>
+                <span class="badge">
+                    <i data-feather="thumbs-up"></i> @item.Likes
+                    <i data-feather="thumbs-down"></i> @item.Dislikes
+                    <i data-feather="message-circle"></i> @item.Answers.Count()
+                    @if (SignInManager.IsSignedIn(User))
+                    {
 
-                    <a class="anchor-time" asp-action="Create" asp-controller="Answers" asp-route-questionId="@item.Id">
-                        <i data-feather="arrow-right"></i> Responder
-                    </a>
-                }
+                        <a class="anchor-time" asp-action="Create" asp-controller="Answers" asp-route-questionId="@item.Id">
+                            <i data-feather="arrow-right"></i> Responder
+                        </a>
+                    }
                 </span>
-        </li>
-
+</li>
+    
     }
 </ul>
 
 <style>
-    .comment_box1 {
-        background-color: #f00;
-        width: 830px;
-        height: 180px;
-    }
-    /*-- Content Style --*/
-    .post-footer-option li {
-        float: left;
-        margin-right: 50px;
-        padding-bottom: 15px;
-    }
+  a.nostyle:link {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
 
-        .post-footer-option li a {
-            color: #AFB4BD;
-            font-weight: 500;
-            font-size: 1.3rem;
-        }
-
-    .photo-profile {
-        border: 1px solid #DDD;
-    }
-
-    .anchor-username h4 {
-        font-weight: bold;
-    }
-
-    .anchor-time {
+a.nostyle:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+   .anchor-time {
         color: #ADB2BB;
         font-size: 1.2rem;
-    }
-
-    .post-footer-comment-wrapper {
-        background-color: #F6F7F8;
     }
 </style>
 
