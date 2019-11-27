@@ -1,6 +1,11 @@
 # OrtResponde
 Tp Nuevas Tecnologias 1
 
+Integrantes
+Pablo Tapia
+Franco Battaglia
+Brian Alvarez
+
 Aplicacion de de Preguntas y Respuesta, simil Yahoo Respuesta o Quora
 
 TODO
