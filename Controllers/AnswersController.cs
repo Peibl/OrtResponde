@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using OrtResponde.Data;
 using OrtResponde.Models;
@@ -74,6 +75,10 @@ namespace OrtResponde.Controllers
                 _context.Add(answer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+    //            return RedirectToAction("Index", new RouteValueDictionary(
+    //new {  action = "Index", Id = _userManager.GetUserId(User) }));
+
+                //return RedirectToAction("Action", new { id = 99 });
             }
             ViewData["QuestionId"] = new SelectList(_context.Question, "Id", "Id", answer.QuestionId);
             return View(answer);

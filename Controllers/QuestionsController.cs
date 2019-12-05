@@ -72,7 +72,8 @@ namespace OrtResponde.Controllers
                 question.UserId = _userManager.GetUserId(User);
                 _context.Add(question);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { id = _userManager.GetUserId(User) });
             }
             return View(question);
         }
