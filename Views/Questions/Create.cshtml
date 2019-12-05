@@ -1,12 +1,13 @@
 ﻿@model OrtResponde.Models.Question
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Question</h4>
+<h1>Crear Pregunta</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,28 +15,28 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Descripcion" class="control-label"></label>
-                <input asp-for="Descripcion" class="form-control" />    
+                <input asp-for="Descripcion" class="form-control form-control-lg" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-                <label asp-for="likes" class="control-label"></label>
-                <input asp-for="likes" class="form-control" />
-                <span asp-validation-for="likes" class="text-danger"></span>
-            </div>
+                    <label asp-for="likes" class="control-label"></label>
+                    <input asp-for="likes" class="form-control" />
+                    <span asp-validation-for="likes" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="dislikes" class="control-label"></label>
+                    <input asp-for="dislikes" class="form-control" />
+                    <span asp-validation-for="dislikes" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
-                <label asp-for="dislikes" class="control-label"></label>
-                <input asp-for="dislikes" class="form-control" />
-                <span asp-validation-for="dislikes" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" asp-route-id="@UserManager.GetUserId(User)">Volver a "Mis Preguntas"</a>
 </div>
 
 @section Scripts {

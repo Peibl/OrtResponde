@@ -25,3 +25,11 @@ NTH
 * Agregar "Descripcion" a la pregunta
 * Agregar posibilidad de subir una imagen a la pregunta
 * Mejoras en dashboard
+
+
+
+Cambiar Estilo de bootstrap
+https://www.youtube.com/watch?v=-n1CQsif0zQ
+
+Iconos 
+https://feathericons.com/?query=l
