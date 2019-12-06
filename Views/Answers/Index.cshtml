@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<OrtResponde.Models.Answer>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Mis Respuestas";
 }
 
-<h1>Index</h1>
+<h1>Mis Respuestas</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -19,10 +17,7 @@
                 @Html.DisplayNameFor(model => model.Likes)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Dislikes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Question)
+                @Html.DisplayNameFor(model => model.Question.Descripcion)
             </th>
             <th></th>
         </tr>
@@ -37,15 +32,12 @@
                 @Html.DisplayFor(modelItem => item.Likes)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Dislikes)
+                @Html.DisplayFor(modelItem => item.Question.Descripcion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Question.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id"> <i data-feather="edit"></i> Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id"> <i data-feather="file-text"></i>Detalle</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"> <i data-feather="trash-2"></i>Borrar</a>
             </td>
         </tr>
 }

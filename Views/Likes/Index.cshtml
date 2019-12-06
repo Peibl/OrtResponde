@@ -1,0 +1,56 @@
+﻿@model IEnumerable<OrtResponde.Models.Like>
+
+@{
+    ViewData["Title"] = "Mis Favoritos";
+}
+
+<h1>Mis Favoritos</h1>
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayName("Pregunta")
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Question.Descripcion)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.LikeType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LikedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Question.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LikeType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LikedDate)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">>Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

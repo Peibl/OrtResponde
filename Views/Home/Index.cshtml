@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
@@ -32,7 +32,6 @@ else
             </a>
                 <span class="badge">
                     <i data-feather="thumbs-up"></i> @item.Likes
-                    <i data-feather="thumbs-down"></i> @item.Dislikes
                     <i data-feather="message-circle"></i> @item.Answers.Count()
                     @if (SignInManager.IsSignedIn(User))
                     {

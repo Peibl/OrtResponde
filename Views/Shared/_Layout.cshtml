@@ -3,7 +3,7 @@
 @inject UserManager<IdentityUser> UserManager
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -38,13 +38,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                    @if (SignInManager.IsSignedIn(User))
+                        @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Questions" asp-action="Index" asp-route-id="@UserManager.GetUserId(User)">Mis Preguntas</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Answers" asp-action="Index"  asp-route-id="@UserManager.GetUserId(User)">Mis Respuestas</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Answers" asp-action="Index" asp-route-id="@UserManager.GetUserId(User)">Mis Respuestas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Likes" asp-action="Index" asp-route-id="@UserManager.GetUserId(User)">Mis Favoritos</a>
                             </li>
                         }
 
