@@ -33,3 +33,6 @@ https://www.youtube.com/watch?v=-n1CQsif0zQ
 
 Iconos 
 https://feathericons.com/?query=l
+
+Identity
+https://www.tutorialspoint.com/asp.net_core/asp.net_core_identity_configuration.htm
