@@ -40,3 +40,13 @@ https://www.tutorialspoint.com/asp.net_core/asp.net_core_identity_configuration.
 https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/
 https://docs.microsoft.com/es-es/aspnet/core/security/authentication/identity?view=aspnetcore-2.2&tabs=netcore-cli
 https://docs.microsoft.com/es-es/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-2.2
+
+Scaffolding identity
+https://www.youtube.com/watch?v=tW5QwWPKXaY
+https://www.youtube.com/watch?v=PITTGFcX-Ec&feature=youtu.be
+
+DB
+Add-Migration Algo
+Update-Database
+
+https://docs.microsoft.com/es-es/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-2.2&tabs=visual-studio
