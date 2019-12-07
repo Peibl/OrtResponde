@@ -12,7 +12,7 @@
     <h1>@Html.DisplayFor(model => model.Descripcion)</h1>
     <span class="badge">
         <i data-feather="thumbs-up"></i> @Html.DisplayFor(model => model.Likes)
-        <i data-feather="thumbs-down"></i> @Html.DisplayFor(model => model.Dislikes)
+        @*<i data-feather="thumbs-down"></i> @Html.DisplayFor(model => model.Dislikes)*@
     </span>
 
     <hr />
@@ -35,5 +35,5 @@
 </div>
 <div>
 
-    <a asp-action="Index" asp-route-id="@UserManager.GetUserId(User)">Volver a "Mis Preguntas"</a>
+    <a asp-action="Index" asp-route-id="@UserManager.GetUserId(User)" class="btn btn-primary">Volver a Mis Preguntas</a>
 </div>

@@ -28,15 +28,12 @@
                     <input asp-for="dislikes" class="form-control" />
                     <span asp-validation-for="dislikes" class="text-danger"></span>
                 </div>*@
-            <div class="form-group">
-                <input type="submit" value="Crear" class="btn btn-primary" />
-            </div>
+        <div class="form-group">
+            <input type="submit" value="Crear" class="btn btn-success" />
+            <a asp-action="Index" asp-route-id="@UserManager.GetUserId(User)" class="btn btn-primary">Volver a Mis Preguntas</a>
+        </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index" asp-route-id="@UserManager.GetUserId(User)">Volver a "Mis Preguntas"</a>
 </div>
 
 @section Scripts {

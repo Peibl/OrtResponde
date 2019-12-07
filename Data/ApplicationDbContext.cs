@@ -15,5 +15,6 @@ namespace OrtResponde.Data
         }
         public DbSet<OrtResponde.Models.Question> Question { get; set; }
         public DbSet<OrtResponde.Models.Answer> Answer { get; set; }
+        public DbSet<OrtResponde.Models.Like> Like { get; set; }
     }
 }

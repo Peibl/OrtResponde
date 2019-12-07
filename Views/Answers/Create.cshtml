@@ -19,15 +19,15 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Envier Respuesta" class="btn btn-primary" />
+                <input type="submit" value="Envier Respuesta" class="btn btn-success" />
+                
+                <a asp-action="Index" class="btn btn-primary">Volver a la Lista</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index" asp-controller="Home">Volver</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

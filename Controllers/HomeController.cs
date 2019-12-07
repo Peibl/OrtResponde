@@ -25,7 +25,7 @@ namespace OrtResponde.Controllers
 
         public IActionResult Index()
         {
-            ViewData["Message"] = "Hello " + User.Identity.Name;
+            ViewData["Message"] = "Bienvenido " + User.Identity.Name + "!";
            var q =  _context.Question.Include(a => a.Answers).ToList();
             ViewData["Questions"] = q;
             return View();

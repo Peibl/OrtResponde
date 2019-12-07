@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrtResponde.Data;
 
 namespace OrtResponde.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191205203632_NewMigrationI")]
+    partial class NewMigrationI
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -230,7 +232,6 @@ namespace OrtResponde.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Respuesta")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
@@ -282,7 +283,6 @@ namespace OrtResponde.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Descripcion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
@@ -359,7 +359,7 @@ namespace OrtResponde.Data.Migrations
                         .WithMany("Likes")
                         .HasForeignKey("AnswerId");
 
-                    b.HasOne("OrtResponde.Models.Question", "Question")
+                    b.HasOne("OrtResponde.Models.Question", null)
                         .WithMany("Likes")
                         .HasForeignKey("QuestionId");
                 });
