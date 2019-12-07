@@ -32,7 +32,11 @@ Cambiar Estilo de bootstrap
 https://www.youtube.com/watch?v=-n1CQsif0zQ
 
 Iconos 
+https://aspnetcoremaster.com/asp.net/core/2019/02/16/agregar-iconos.html
 https://feathericons.com/?query=l
 
 Identity
 https://www.tutorialspoint.com/asp.net_core/asp.net_core_identity_configuration.htm
+https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/
+https://docs.microsoft.com/es-es/aspnet/core/security/authentication/identity?view=aspnetcore-2.2&tabs=netcore-cli
+https://docs.microsoft.com/es-es/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-2.2

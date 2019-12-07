@@ -74,11 +74,7 @@ namespace OrtResponde.Controllers
                 answer.UserId = _userManager.GetUserId(User);
                 _context.Add(answer);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-    //            return RedirectToAction("Index", new RouteValueDictionary(
-    //new {  action = "Index", Id = _userManager.GetUserId(User) }));
-
-                //return RedirectToAction("Action", new { id = 99 });
+                return RedirectToAction("Details", "Questions", new { id = answer.QuestionId });
             }
             ViewData["QuestionId"] = new SelectList(_context.Question, "Id", "Id", answer.QuestionId);
             return View(answer);
