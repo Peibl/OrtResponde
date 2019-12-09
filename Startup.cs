@@ -54,7 +54,7 @@ namespace OrtResponde
                 // User settings.
                 options.User.AllowedUserNameCharacters =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-                options.User.RequireUniqueEmail = true;
+                options.User.RequireUniqueEmail = true  ;
 
                 options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedAccount = false;

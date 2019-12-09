@@ -19,6 +19,8 @@ namespace OrtResponde.Models
         [DisplayName("Fecha")]
         public DateTime LikedDate { get; set; }
 
+        public int QuestionId { get; set; }
+
         public Question Question { get; set; }
     }
 }

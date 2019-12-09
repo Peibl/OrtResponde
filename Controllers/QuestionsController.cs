@@ -28,7 +28,7 @@ namespace OrtResponde.Controllers
         {
             if (id == null)
             {
-                return View(await _context.Question.Include( a => a.Answers).ToListAsync());
+                return View(await _context.Question.Include( a => a.Answers).Include(l=> l.Likes).ToListAsync());
                 
             }
             return View(await _context.Question.Where(q => q.UserId == id).ToListAsync());

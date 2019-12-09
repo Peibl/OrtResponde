@@ -15,7 +15,7 @@ namespace OrtResponde.Models
         [Required(ErrorMessage = "El campo no puede estar vacio.")]
         public string Descripcion { get; set; }
 
-        public ICollection<Like> Likes { get; set; }
+        public virtual ICollection<Like> Likes { get; set; }
 
         [DisplayName("Id Usuario")]
         public string UserId { get; set; }

@@ -25,6 +25,10 @@ namespace OrtResponde.Controllers
             return View(await _context.Like.ToListAsync());
         }
 
+        public async Task<IActionResult> Like(String id)
+        {
+            return View();
+        }
         // GET: Likes/Details/5
         public async Task<IActionResult> Details(int? id)
         {

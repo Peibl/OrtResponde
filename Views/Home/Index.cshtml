@@ -2,6 +2,7 @@
     ViewData["Title"] = "Home";
 }
 @using Microsoft.AspNetCore.Identity
+@using OrtResponde.Views.Shared
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @model IEnumerable<OrtResponde.Models.Question>
@@ -25,40 +26,45 @@ else
 <ul class="list-unstyled list-group">
     @foreach (var item in (List<Question>)ViewData["Questions"])
     {
-    
-        <li  class="list-group-item d-flex justify-content-between align-items-center">
+
+        <li class="list-group-item d-flex justify-content-between align-items-center">
             <a class="nostyle" asp-action="Details" asp-controller="Questions" asp-route-id="@item.Id">
                 <h2>@item.Descripcion</h2>
             </a>
-                <span class="badge">
-                    <i data-feather="thumbs-up"></i> @item.Likes
-                    <i data-feather="message-circle"></i> @item.Answers.Count()
-                    @if (SignInManager.IsSignedIn(User))
-                    {
+            <span class="badge">
 
-                        <a class="anchor-time" asp-action="Create" asp-controller="Answers" asp-route-questionId="@item.Id">
-                            <i data-feather="arrow-right"></i> Responder
-                        </a>
-                    }
-                </span>
-</li>
-    
+
+                @(await Html.RenderComponentAsync<LikeComponent>(RenderMode.Static, new { questionId = item.Id, pressed = true }))
+                @(await Html.RenderComponentAsync<LikeComponent>(RenderMode.Static, new { questionId = item.Id, pressed = false }))
+                @item.Likes.Count()
+                <i data-feather="message-circle"></i> @item.Answers.Count()
+                @if (SignInManager.IsSignedIn(User))
+                {
+
+                    <a class="anchor-time" asp-action="Create" asp-controller="Answers" asp-route-questionId="@item.Id">
+                        <i data-feather="arrow-right"></i> Responder
+                    </a>
+                }
+            </span>
+        </li>
+
     }
 </ul>
 
 <style>
-  a.nostyle:link {
-    text-decoration: inherit;
-    color: inherit;
-    cursor: auto;
-}
+    a.nostyle:link {
+        text-decoration: inherit;
+        color: inherit;
+        cursor: auto;
+    }
 
-a.nostyle:visited {
-    text-decoration: inherit;
-    color: inherit;
-    cursor: auto;
-}
-   .anchor-time {
+    a.nostyle:visited {
+        text-decoration: inherit;
+        color: inherit;
+        cursor: auto;
+    }
+
+    .anchor-time {
         color: #ADB2BB;
         font-size: 1.2rem;
     }
