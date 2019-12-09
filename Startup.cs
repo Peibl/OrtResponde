@@ -54,7 +54,7 @@ namespace OrtResponde
                 // User settings.
                 options.User.AllowedUserNameCharacters =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-                options.User.RequireUniqueEmail = false;
+                options.User.RequireUniqueEmail = true;
 
                 options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedAccount = false;
@@ -73,7 +73,9 @@ namespace OrtResponde
                 options.SlidingExpiration = true;
             });
 
-
+//            services.Configure<PasswordHasherOptions>(options =>
+//    options.CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV2
+//);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
