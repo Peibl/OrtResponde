@@ -5,27 +5,20 @@
 else
 {
     <style type="text/css">
-        .grey {
-            background-color: grey;
-        }
-
         .approved {
             color: green;
         }
+      </style>
+    <i data-feather="thumbs-up" class="approved"></i>
 
-        .rejected {
-            background-color: red;
-        }
+}   
 
-        .pending {
-            background-color: lime;
-        }
-    </style>
-    <i data-feather="circle" class="approved"></i>
-}
+
 @code {
     [Parameter]
     public int questionId { get; set; }
     [Parameter]
     public Boolean pressed { get; set; }
+
+
 }

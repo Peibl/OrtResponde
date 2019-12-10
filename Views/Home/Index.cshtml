@@ -34,6 +34,27 @@ else
             <span class="badge">
 
 
+                <button type="button" id="btnScore"
+                        onclick="DoLike()">
+                    <i data-feather="thumbs-up"></i>
+                </button>
+
+                <script>
+                    function DoLike() {
+                        $.ajax({
+                            type: "POST",
+                            url: "/Likes/Like",
+                            async: true,
+                            success: function (msg) {
+                                console.log('hola')
+                            },
+                            error: function () {
+                                return "error";
+                            }
+                        });
+                    }
+                </script>
+
                 @(await Html.RenderComponentAsync<LikeComponent>(RenderMode.Static, new { questionId = item.Id, pressed = true }))
                 @(await Html.RenderComponentAsync<LikeComponent>(RenderMode.Static, new { questionId = item.Id, pressed = false }))
                 @item.Likes.Count()
