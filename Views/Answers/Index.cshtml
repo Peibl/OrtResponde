@@ -37,7 +37,9 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id"> <i data-feather="edit"></i> Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id"> <i data-feather="file-text"></i>Detalle</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id"> <i data-feather="trash-2"></i>Borrar</a>
+                @*<a asp-action="Delete" asp-route-id="@item.Id"> <i data-feather="trash-2"></i>Borrar</a>*@
+                <a id="idasd" href="#" class="btnPush"><i data-feather="trash-2"></i>Borrar</a>@await Html.PartialAsync("_DeleteModal.cshtml", item)
+
             </td>
         </tr>
 }
