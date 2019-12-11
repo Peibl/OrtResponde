@@ -3,3 +3,7 @@
 
 // Write your JavaScript code.
 feather.replace();
+
+$('.btnPush').click(function (e) {
+    $('#modalDelete').modal('show');
+});

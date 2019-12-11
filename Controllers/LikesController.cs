@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OrtResponde.Data;
 using OrtResponde.Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace OrtResponde.Controllers
 {
@@ -20,9 +18,15 @@ namespace OrtResponde.Controllers
         }
 
         // GET: Likes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(String id)
         {
-            return View(await _context.Like.ToListAsync());
+            if (id == null)
+            {
+                return View(await _context.Like.Include(a => a.Question).ToListAsync());
+
+            }
+            return View(await _context.Like.Where(q => q.UserId == id).ToListAsync());
+
         }
         [HttpPost]
         public void Like()
@@ -48,25 +52,34 @@ namespace OrtResponde.Controllers
         }
 
         // GET: Likes/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        //public IActionResult Create()
+        //{
+        //    //return View();
 
-        // POST: Likes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UserId,LikeType,LikedDate")] Like like)
+        //    //return RedirectToAction("Create", new
+        //    //{
+        //    //    ID = 3,
+        //    //});
+
+
+        //}
+
+        public async Task<IActionResult> Create(Question question)
         {
+            var existing = _context.Like.Where(l => l.UserId == "53c7d125-dd9d-419c-8e5c-2c14595015ba" && l.Question.Id == question.Id);
+
+
             if (ModelState.IsValid)
             {
+                Like like = new Like();
+                like.UserId = User.Identity.Name;
+                like.LikedDate = DateTime.Now;
+                like.LikeType = true;
                 _context.Add(like);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(like);
+            return View();
         }
 
         // GET: Likes/Edit/5

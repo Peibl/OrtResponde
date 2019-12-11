@@ -3,37 +3,45 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles";
 }
 
 
+    <head>
+    </head>
+    <div>
+        <h1>@Html.DisplayFor(model => model.Descripcion)</h1>
+        <span class="badge">
+            @*data-feather="thumbs-up"*@
+            <i data-feather="thumbs-up"></i>
+            @*<a      class="btn btn-dark"
+             asp-action="Create"
+             asp-controller="Likes"
+             asp-route-Id="@Model.Id"
+             asp-route-UserId="@Model.UserId"
+             method="post">LIKEAR</a>
+        >asdasdasd</a>*@
+            @Html.ActionLink("Likear","Create", "Likes", @Model)
+        </span>
 
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.Label("Respuestas")
+            </dt>
+            <dd class="col-sm-10">
+                <ul>
+                    @foreach (var item in Model.Answers)
+                    {
+                        <li>
+                            @Html.DisplayFor(modelItem => item.Respuesta)
+                        </li>
+
+                    }
+                </ul>
+            </dd>
+        </dl>
+    </div>
 <div>
-    <h1>@Html.DisplayFor(model => model.Descripcion)</h1>
-    <span class="badge">
-        <i data-feather="thumbs-up"></i> @Html.DisplayFor(model => model.Likes)
-        @*<i data-feather="thumbs-down"></i> @Html.DisplayFor(model => model.Dislikes)*@
-    </span>
 
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.Label("Respuestas")
-        </dt>
-        <dd class="col-sm-10">
-            <ul>
-                @foreach (var item in Model.Answers)
-                {
-                    <li>
-                        @Html.DisplayFor(modelItem => item.Respuesta)
-                    </li>
-
-                }
-            </ul>
-        </dd>
-    </dl>
-</div>
-<div>
-
-    <a asp-action="Index" asp-route-id="@UserManager.GetUserId(User)" class="btn btn-primary">Volver a Mis Preguntas</a>
-</div>
+    <a asp-action="Index" asp-route-id="@UserManager.GetUserId(User)">Volver a Mis Preguntas</a>
+</div>  

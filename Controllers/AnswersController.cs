@@ -141,15 +141,19 @@ namespace OrtResponde.Controllers
                 return NotFound();
             }
 
-            var answer = await _context.Answer
-                .Include(a => a.Question)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (answer == null)
-            {
-                return NotFound();
-            }
+            //var answer = await _context.Answer
+            //    .Include(a => a.Question)
+            //    .FirstOrDefaultAsync(m => m.Id == id);
+            //if (answer == null)
+            //{
+            //    return NotFound();
+            //}
+            var answer = await _context.Answer.FindAsync(id);
+            _context.Answer.Remove(answer);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
 
-            return View(answer);
+            //return View(answer);
         }
 
         // POST: Answers/Delete/5
