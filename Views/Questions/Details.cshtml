@@ -30,7 +30,14 @@
             </dd>
         </dl>
     </div>
-<div>
+    <div>
 
-    <a asp-action="Index" asp-route-id="@UserManager.GetUserId(User)">Volver a Mis Preguntas</a>
-</div>  
+        @if (SignInManager.IsSignedIn(User))
+        {
+
+            <a asp-action="Index" asp-route-id="@UserManager.GetUserId(User)">Volver a Mis Preguntas</a>
+        }
+        else { 
+            <a asp-action="Index" asp-controller="Home">Volver </a>
+        }
+    </div>  
