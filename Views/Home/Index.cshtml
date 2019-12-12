@@ -5,7 +5,9 @@
 @using OrtResponde.Views.Shared
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
-@model IEnumerable<OrtResponde.Models.Question>
+@model OrtResponde.Models.Like
+
+
 
 @if (SignInManager.IsSignedIn(User))
 {
@@ -33,31 +35,28 @@ else
             </a>
             <span class="badge">
 
+                @if (@item.hasUserLike(UserManager.GetUserId(User)))
+                {
+                    <form asp-action="Delete" asp-controller="Likes" asp-route-url="/home">
+                        <input type="hidden" asp-for="Id" value="@item.getLikeId(UserManager.GetUserId(User))" />
+                        @*<input type="submit" value="Ya no me gusta" class="btn btn-danger" />*@
+                        <button type="submit" class="btn btn-primary">Te gusta</button>
+                    </form>
+                }
+                else
+                {
+                    <form asp-action="Create" asp-controller="Likes" asp-route-url="/home">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="QuestionId" value="@item.Id" class="form-control" />
+                        <input type="hidden" asp-for="Question" value="@item" class="form-control" />
+                        <input type="hidden" asp-for="LikedDate" value="@DateTime.Now" class="form-control" />
+                        <input type="hidden" asp-for="UserId" value="@UserManager.GetUserId(User)" class="form-control" />
+                        @*<input type="submit" value="Like" class="btn btn-primary" />*@
+                        <button type="submit" class="btn btn-outline-primary"> Me gusta</button>
+                    </form>
+                }
 
-                <button type="button" id="btnScore"
-                        onclick="DoLike()">
-                    <i data-feather="thumbs-up"></i>
-                </button>
-
-                <script>
-                    function DoLike() {
-                        $.ajax({
-                            type: "POST",
-                            url: "/Likes/Like",
-                            async: true,
-                            success: function (msg) {
-                                console.log('hola')
-                            },
-                            error: function () {
-                                return "error";
-                            }
-                        });
-                    }
-                </script>
-
-                @(await Html.RenderComponentAsync<LikeComponent>(RenderMode.Static, new { questionId = item.Id, pressed = true }))
-                @(await Html.RenderComponentAsync<LikeComponent>(RenderMode.Static, new { questionId = item.Id, pressed = false }))
-                @item.Likes.Count()
+                <i data-feather="thumbs-up"></i> @item.Likes.Count()
                 <i data-feather="message-circle"></i> @item.Answers.Count()
                 @if (SignInManager.IsSignedIn(User))
                 {
@@ -88,6 +87,10 @@ else
     .anchor-time {
         color: #ADB2BB;
         font-size: 1.2rem;
+    }
+
+    .approved {
+        color: green;
     }
 </style>
 

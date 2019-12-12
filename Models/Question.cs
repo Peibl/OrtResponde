@@ -22,5 +22,20 @@ namespace OrtResponde.Models
 
         [DisplayName("Respuestas")]
         public virtual ICollection<Answer> Answers { get; set; }
+
+
+        public Boolean hasUserLike(String userId) {
+            var xx = this.Likes.SingleOrDefault(t => t.UserId == userId && t.LikeType);
+            return xx != null;
+        }
+        public int getLikeId(String userId)
+        {
+            var xx = this.Likes.SingleOrDefault(t => t.UserId == userId && t.LikeType);
+            if (xx != null) { 
+            return xx.Id;
+            }else {
+                return -1;
+            }
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace OrtResponde.Controllers
             _logger = logger;
         }
 
+
         public IActionResult Index()
         {
             ViewData["Message"] = "Bienvenido " + User.Identity.Name + "!";

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OrtResponde.Data;
 using OrtResponde.Models;
@@ -28,11 +29,6 @@ namespace OrtResponde.Controllers
             return View(await _context.Like.Where(q => q.UserId == id).ToListAsync());
 
         }
-        [HttpPost]
-        public void Like()
-        {
-            Console.WriteLine("hola mundi");
-        }
         // GET: Likes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -51,35 +47,21 @@ namespace OrtResponde.Controllers
             return View(like);
         }
 
-        // GET: Likes/Create
-        //public IActionResult Create()
-        //{
-        //    //return View();
+        public async Task<IActionResult> Create(Like like, String url)
 
-        //    //return RedirectToAction("Create", new
-        //    //{
-        //    //    ID = 3,
-        //    //});
-
-
-        //}
-
-        public async Task<IActionResult> Create(Question question)
         {
-            var existing = _context.Like.Where(l => l.UserId == "53c7d125-dd9d-419c-8e5c-2c14595015ba" && l.Question.Id == question.Id);
+            if (like.UserId == null) {
+                ModelState.AddModelError("not_login", "Debes estar logueado para poder dar Like");
+            }
 
-
-            if (ModelState.IsValid)
+           if (ModelState.IsValid)
             {
-                Like like = new Like();
-                like.UserId = User.Identity.Name;
-                like.LikedDate = DateTime.Now;
-                like.LikeType = true;
+                like.LikeType = !like.LikeType;
                 _context.Add(like);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Redirect(url);
             }
-            return View();
+            return Redirect(url);
         }
 
         // GET: Likes/Edit/5
@@ -134,7 +116,7 @@ namespace OrtResponde.Controllers
         }
 
         // GET: Likes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, String url)
         {
             if (id == null)
             {
@@ -147,19 +129,21 @@ namespace OrtResponde.Controllers
             {
                 return NotFound();
             }
-
-            return View(like);
+            like.LikeType = false;
+            _context.Like.Add(like);
+            await _context.SaveChangesAsync();
+            return Redirect(url);
         }
 
         // POST: Likes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, String url)
         {
             var like = await _context.Like.FindAsync(id);
             _context.Like.Remove(like);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+             return Redirect(url);
         }
 
         private bool LikeExists(int id)
