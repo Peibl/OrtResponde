@@ -30,7 +30,7 @@ namespace OrtResponde.Controllers
                 var applicationDbContext = _context.Answer.Include(a => a.Question);
                 return View(await applicationDbContext.ToListAsync());
             }
-            return View(await _context.Answer.Where(q => q.UserId == id).ToListAsync());
+            return View(await _context.Answer.Include(a => a.Question).Where(q => q.UserId == id).ToListAsync());
 
         }
 

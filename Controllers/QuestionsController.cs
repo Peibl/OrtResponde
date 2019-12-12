@@ -31,7 +31,7 @@ namespace OrtResponde.Controllers
                 return View(await _context.Question.Include( a => a.Answers).Include(l=> l.Likes).ToListAsync());
                 
             }
-            return View(await _context.Question.Where(q => q.UserId == id).ToListAsync());
+            return View(await _context.Question.Include(a => a.Answers).Include(l => l.Likes).Where(q => q.UserId == id).ToListAsync());
         }
 
         // GET: Questions/Details/5
@@ -49,7 +49,7 @@ namespace OrtResponde.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["Users"] = _context.Users.ToList();
             return View(question);
         }
 

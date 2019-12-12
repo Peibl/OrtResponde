@@ -14,9 +14,6 @@
                 @Html.DisplayNameFor(model => model.Respuesta)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Likes)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Question.Descripcion)
             </th>
             <th></th>
@@ -29,10 +26,9 @@
                 @Html.DisplayFor(modelItem => item.Respuesta)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Likes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Question.Descripcion)
+                <a class="nostyle" asp-action="Details" asp-controller="Questions" asp-route-id="@item.QuestionId">
+                    @item.Question.Descripcion
+                </a>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id"> <i data-feather="edit"></i> Edit</a> |

@@ -18,24 +18,30 @@
             <th>
                 @Html.DisplayNameFor(model => model.Likes)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Answers)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descripcion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Likes)
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id"> <i data-feather="file-text"></i>Detalle</a> |
-                    <a id="idasd" href="#" class="btnPush"><i data-feather="trash-2"></i>Borrar</a>@await Html.PartialAsync("_DeleteModal.cshtml", item)
-                </td>
-            </tr>            
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @item.Likes.Count()
+            </td>
+            <td>
+                @item.Answers.Count()
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id"> <i data-feather="file-text"></i>Detalle</a> |
+                <a id="idasd" href="#" class="btnPush"><i data-feather="trash-2"></i>Borrar</a>@await Html.PartialAsync("_DeleteModal.cshtml", item)
+            </td>
+        </tr>            
         }
 
     </tbody>

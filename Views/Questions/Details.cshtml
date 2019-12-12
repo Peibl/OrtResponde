@@ -4,6 +4,7 @@
 @inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Detalles";
+     var users = (List<IdentityUser>)ViewData["Users"];
 }
 
 
@@ -11,18 +12,7 @@
     </head>
     <div>
         <h1>@Html.DisplayFor(model => model.Descripcion)</h1>
-        @*<span class="badge">
-                <i data-feather="thumbs-up"></i>
-            <a      class="btn btn-dark"
-             asp-action="Create"
-             asp-controller="Likes"
-             asp-route-Id="@Model.Id"
-             asp-route-UserId="@Model.UserId"
-             method="post">LIKEAR</a>
-        >asdasdasd</a>
-            @Html.ActionLink("Likear","Create", "Likes", @Model)
-        </span>*@
-
+        <hr />
         <dl class="row">
             <dt class="col-sm-2">
                 @Html.Label("Respuestas")
@@ -31,9 +21,9 @@
                 <ul>
                     @foreach (var item in Model.Answers)
                     {
-                        <li>
-                            @Html.DisplayFor(modelItem => item.Respuesta)
-                        </li>
+                    <li>
+                        @Html.DisplayFor(modelItem => item.Respuesta)  - Autor: @users.SingleOrDefault(t => t.Id == item.UserId).UserName
+                    </li>
 
                     }
                 </ul>

@@ -34,26 +34,27 @@ else
                 <h2>@item.Descripcion</h2>
             </a>
             <span class="badge">
+                @if (SignInManager.IsSignedIn(User))
+                {
 
-                @if (@item.hasUserLike(UserManager.GetUserId(User)))
-                {
-                    <form asp-action="Delete" asp-controller="Likes" asp-route-url="/home">
-                        <input type="hidden" asp-for="Id" value="@item.getLikeId(UserManager.GetUserId(User))" />
-                        @*<input type="submit" value="Ya no me gusta" class="btn btn-danger" />*@
-                        <button type="submit" class="btn btn-primary">Te gusta</button>
-                    </form>
-                }
-                else
-                {
-                    <form asp-action="Create" asp-controller="Likes" asp-route-url="/home">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <input type="hidden" asp-for="QuestionId" value="@item.Id" class="form-control" />
-                        <input type="hidden" asp-for="Question" value="@item" class="form-control" />
-                        <input type="hidden" asp-for="LikedDate" value="@DateTime.Now" class="form-control" />
-                        <input type="hidden" asp-for="UserId" value="@UserManager.GetUserId(User)" class="form-control" />
-                        @*<input type="submit" value="Like" class="btn btn-primary" />*@
-                        <button type="submit" class="btn btn-outline-primary"> Me gusta</button>
-                    </form>
+                    @if (@item.hasUserLike(UserManager.GetUserId(User)))
+                    {
+                        <form asp-action="Delete" asp-controller="Likes" asp-route-url="/home">
+                            <input type="hidden" asp-for="Id" value="@item.getLikeId(UserManager.GetUserId(User))" />
+                            <button type="submit" class="btn btn-primary">Te gusta</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-action="Create" asp-controller="Likes" asp-route-url="/home">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="QuestionId" value="@item.Id" class="form-control" />
+                            <input type="hidden" asp-for="Question" value="@item" class="form-control" />
+                            <input type="hidden" asp-for="LikedDate" value="@DateTime.Now" class="form-control" />
+                            <input type="hidden" asp-for="UserId" value="@UserManager.GetUserId(User)" class="form-control" />
+                            <button type="submit" class="btn btn-outline-primary"> Me gusta</button>
+                        </form>
+                    }
                 }
 
                 <i data-feather="thumbs-up"></i> @item.Likes.Count()
