@@ -25,12 +25,8 @@ namespace OrtResponde.Controllers
         // GET: Answers
         public async Task<IActionResult> Index(string? id)
         {
-            if (id == null)
-            {
-                var applicationDbContext = _context.Answer.Include(a => a.Question);
-                return View(await applicationDbContext.ToListAsync());
-            }
-            return View(await _context.Answer.Include(a => a.Question).Where(q => q.UserId == id).ToListAsync());
+
+            return View(await _context.Answer.Include(a => a.Question).Where(q => q.UserId == _userManager.GetUserId(User)).ToListAsync());
 
         }
 
