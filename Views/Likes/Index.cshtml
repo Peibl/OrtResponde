@@ -8,9 +8,7 @@
 
 <h1>Mis Favoritos</h1>
 
-@*<p>
-        <a asp-action="Create">Create New</a>
-    </p>*@
+
 <table class="table">
     <thead>
         <tr>
@@ -19,12 +17,6 @@
             </th>
             <th>
                 @Html.DisplayName("Pregunta")
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Question.Descripcion)
-                </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.LikeType)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LikedDate)
@@ -38,15 +30,11 @@
             <tr>
                 <td>
                     @users.SingleOrDefault(t => t.Id == item.UserId).UserName
-                    @*@Html.DisplayFor(modelItem => item.UserId)*@
                 </td>
                 <td>
                     <a class="nostyle" asp-action="Details" asp-controller="Questions" asp-route-id="@item.QuestionId">
                         @item.Question.Descripcion
                     </a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LikeType)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.LikedDate)
