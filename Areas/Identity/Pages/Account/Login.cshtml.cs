@@ -46,10 +46,11 @@ namespace OrtResponde.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
+            [EmailAddress(ErrorMessage ="Email Invalido")]
             public string Email { get; set; }
 
             [Required]
+            [Display(Name = "Contraseña")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
@@ -100,7 +101,7 @@ namespace OrtResponde.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Login incorrecto.");
                     return Page();
                 }
             }

@@ -46,16 +46,16 @@ namespace OrtResponde.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
+            [EmailAddress(ErrorMessage ="El mail es requerido")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage ="El username es requerido")]
             [Display(Name = "Nombre de usuario")]
             public string Username { get; set; }
 
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage ="La contraseña es requerida")]
+            [StringLength(100, ErrorMessage = "Minimo 6 caracteres.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Contraseña")]
             public string Password { get; set; }
@@ -107,7 +107,16 @@ namespace OrtResponde.Areas.Identity.Pages.Account
                 }
                 foreach (var error in result.Errors)
                 {
+
+                    if (error.Description.EndsWith("is already taken."))
+                    {
+                        var errorMessage = error.Description.Replace("is already taken.", "ya se encuentra en uso");
+                        ModelState.AddModelError(string.Empty, errorMessage);
+                    }
+                    else {
+
                     ModelState.AddModelError(string.Empty, error.Description);
+                    }
                 }
             }
 
