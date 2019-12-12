@@ -1,5 +1,5 @@
 ﻿@model OrtResponde.Models.Like
-
+@using Microsoft.AspNetCore.Identity
 @{
     ViewData["Title"] = "Details";
 }
@@ -14,7 +14,8 @@
             @Html.DisplayNameFor(model => model.UserId)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UserId)
+            @*(List<IdentityUser>)ViewData["Users"]).SingleOrDefault(t => t.Id == model.UserId).UserName*@
+                @*@Html.DisplayFor(model => ()*@
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.LikeType)
@@ -31,6 +32,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
     <a asp-action="Index">Back to List</a>
 </div>

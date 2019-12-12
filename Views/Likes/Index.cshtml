@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<OrtResponde.Models.Like>
+@using Microsoft.AspNetCore.Identity
 
 @{
     ViewData["Title"] = "Mis Favoritos";
+    var users = (List<IdentityUser>)ViewData["Users"];
 }
 
 <h1>Mis Favoritos</h1>
@@ -19,8 +21,8 @@
                 @Html.DisplayName("Pregunta")
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.Question.Descripcion)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.Question.Descripcion)
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.LikeType)
             </th>
@@ -35,10 +37,13 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UserId)
+                    @users.SingleOrDefault(t => t.Id == item.UserId).UserName
+                    @*@Html.DisplayFor(modelItem => item.UserId)*@
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Question.Descripcion)
+                    <a class="nostyle" asp-action="Details" asp-controller="Questions" asp-route-id="@item.QuestionId">
+                        @item.Question.Descripcion
+                    </a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.LikeType)

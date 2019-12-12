@@ -26,7 +26,8 @@ namespace OrtResponde.Controllers
                 return View(await _context.Like.Include(a => a.Question).ToListAsync());
 
             }
-            return View(await _context.Like.Where(q => q.UserId == id).ToListAsync());
+            ViewData["Users"] = _context.Users.ToList();
+            return View(await _context.Like.Include(a => a.Question).Where(q => q.UserId == id).ToListAsync());
 
         }
         // GET: Likes/Details/5
