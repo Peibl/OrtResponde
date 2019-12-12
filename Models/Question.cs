@@ -23,6 +23,9 @@ namespace OrtResponde.Models
         [DisplayName("Respuestas")]
         public virtual ICollection<Answer> Answers { get; set; }
 
+        [DisplayName("Fecha")]
+        public DateTime CreationDate { get; set; }
+
 
         public Boolean hasUserLike(String userId) {
             var xx = this.Likes.SingleOrDefault(t => t.UserId == userId && t.LikeType);

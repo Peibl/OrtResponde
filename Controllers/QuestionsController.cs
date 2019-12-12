@@ -70,6 +70,7 @@ namespace OrtResponde.Controllers
             {
                 
                 question.UserId = _userManager.GetUserId(User);
+                question.CreationDate = DateTime.Now;
                 _context.Add(question);
                 await _context.SaveChangesAsync();
                 //return RedirectToAction(nameof(Index));

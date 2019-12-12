@@ -21,6 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Answers)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -36,6 +39,9 @@
             </td>
             <td>
                 @item.Answers.Count()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.Id"> <i data-feather="file-text"></i>Detalle</a> |

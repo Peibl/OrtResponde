@@ -18,20 +18,21 @@
                 <input asp-for="Descripcion" class="form-control form-control-lg" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
+            <input type="hidden" asp-for="CreationDate" value="@DateTime.Now" class="form-control" />
             @*<div class="form-group">
-                    <label asp-for="likes" class="control-label"></label>
-                    <input asp-for="likes" class="form-control" />
-                    <span asp-validation-for="likes" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="dislikes" class="control-label"></label>
-                    <input asp-for="dislikes" class="form-control" />
-                    <span asp-validation-for="dislikes" class="text-danger"></span>
-                </div>*@
-        <div class="form-group">
-            <input type="submit" value="Crear" class="btn btn-success" />
-            <a asp-action="Index" asp-route-id="@UserManager.GetUserId(User)" class="btn btn-primary">Volver a Mis Preguntas</a>
-        </div>
+                <label asp-for="likes" class="control-label"></label>
+                <input asp-for="likes" class="form-control" />
+                <span asp-validation-for="likes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dislikes" class="control-label"></label>
+                <input asp-for="dislikes" class="form-control" />
+                <span asp-validation-for="dislikes" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-success" />
+                <a asp-action="Index" asp-route-id="@UserManager.GetUserId(User)" class="btn btn-primary">Volver a Mis Preguntas</a>
+            </div>
         </form>
     </div>
 </div>
